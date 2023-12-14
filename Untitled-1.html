@@ -5,7 +5,7 @@
   <meta name="user-scalable=no" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Maze Adventure</title>
   <style>
-    body {
+       body {
       margin: 0;
       overflow: hidden;
       display: flex;
@@ -54,24 +54,26 @@
   </style>
 </head>
 <body>
-  <canvas id="mazeCanvas"></canvas>
+    <canvas id="mazeCanvas"></canvas>
 
-  <!-- Ajout de boutons tactiles -->
-  <div class="touch-controls">
-    <div class="touch-button" id="upButton">↑</div>
-    <div class="touch-button" id="leftButton">←</div>
-    <div class="touch-button" id="downButton">↓</div>
-    <div class="touch-button" id="rightButton">→</div>
-  </div>
+    <!-- Ajout de boutons tactiles -->
+    <div class="touch-controls">
+      <div class="touch-button" id="upButton">↑</div>
+      <div class="touch-button" id="leftButton">←</div>
+      <div class="touch-button" id="downButton">↓</div>
+      <div class="touch-button" id="rightButton">→</div>
+    </div>
 
   <script>
-    const canvas = document.getElementById('mazeCanvas');
+       const canvas = document.getElementById('mazeCanvas');
     const ctx = canvas.getContext('2d');
     const victorySound = new Audio('victory.mp3'); // Ajoutez le chemin vers votre fichier audio
 
-    const playerSize = 20;
-    const cellSize = 20;
+    const playerSize = 30; // Augmentez la taille du joueur
+    const cellSize = 30; // Augmentez la taille des cellules du labyrinthe
     const animationDuration = 200; // Réduit la durée de l'animation à 200 ms pour un déplacement plus rapide
+
+
 
     let mazeGrid;
     let mazeSize;
@@ -284,6 +286,12 @@
     document.getElementById('leftButton').addEventListener('touchstart', () => handleTouchButton('leftButton'));
     document.getElementById('rightButton').addEventListener('touchstart', () => handleTouchButton('rightButton'));
 
+    // Ajout d'événements clic aux boutons pour les ordinateurs
+    document.getElementById('upButton').addEventListener('click', () => handleTouchButton('upButton'));
+    document.getElementById('downButton').addEventListener('click', () => handleTouchButton('downButton'));
+    document.getElementById('leftButton').addEventListener('click', () => handleTouchButton('leftButton'));
+    document.getElementById('rightButton').addEventListener('click', () => handleTouchButton('rightButton'));
+
     window.addEventListener('keydown', handleKeyPress);
 
     // Initialiser le jeu au chargement de la page
@@ -296,6 +304,9 @@
     window.addEventListener('resize', () => {
       initGame();
     });
+    
+    let currentLevel = 1;
+
   </script>
 </body>
 </html>
